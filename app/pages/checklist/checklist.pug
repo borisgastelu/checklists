@@ -1,0 +1,21 @@
+ion-header
+	ion-navbar(secondary)
+		ion-title Checklist Title
+		ion-buttons(end)
+			button
+				ion-icon(name="refresh-circle")
+			button
+				ion-icon(name="add-circle")
+
+ion-content(padding)
+	ion-list(no-lines)
+		ion-item-sliding
+			ion-item
+				ion-label Item Label
+				ion-checkbox
+
+			ion-item-options
+				button(light)
+					ion-icon(name="clipboard")
+				button(danger)
+					ion-icon(name="trash")

@@ -1,0 +1,19 @@
+ion-header
+	ion-navbar(secondary)
+		ion-title {{ title }}
+		ion-buttons(end)
+			button((click)="addChecklist()")
+				ion-icon(name="add-circle")
+
+ion-content(padding)
+	ion-list(no-lines)
+		ion-item-sliding(*ngFor="let ch of checklists")
+			button(ion-item, (click)="viewChecklist()")
+				ion-item-content {{ ch.title }}
+				span {{ ch.items.length }} items
+
+			ion-item-options
+				button(light)
+					ion-icon(name="clipboard")
+				button(danger)
+					ion-icon(name="trash")
