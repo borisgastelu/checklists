@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ChecklistModel {
 
-	checklist: any;
 	items: any[];
 
 	constructor(public title: string, items: any[]) {
@@ -15,6 +14,10 @@ export class ChecklistModel {
 			title: item,
 			checked: false
 		});
+	}
+
+	setTitle(title: string): void {
+		this.title = title;
 	}
 
 }
