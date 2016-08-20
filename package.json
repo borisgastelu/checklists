@@ -37,7 +37,10 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard",
-    "cordova-sqlite-storage"
+    {
+      "locator": "https://github.com/litehelpers/Cordova-sqlite-storage",
+      "id": "cordova-sqlite-storage"
+    }
   ],
   "cordovaPlatforms": [
     {
