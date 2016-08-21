@@ -14,8 +14,19 @@ export class Data {
 		return this.storage.get('checklists');
 	}
 
-	setData(data): void {
-		let newData = JSON.stringify(data);
+	setData(data): void { 	// Observable
+		let saveData = [];
+
+		// Remove observables
+		data.forEach(checklist => {
+		    saveData.push({
+				title: checklist.title,
+				items: checklist.items
+			});
+		});
+
+		// Save clean data
+		let newData = JSON.stringify(saveData);
 		this.storage.set('checklists', newData);
 	}
 

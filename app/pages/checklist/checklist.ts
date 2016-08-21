@@ -43,4 +43,16 @@ export class ChecklistPage {
 		prompt.present();
 	}
 
+	remove(item): void {
+		this.checklist.removeItem(item);
+	}
+
+	toggle(item): void {
+		this.checklist.toggleItem(item);
+	}
+
+	uncheck(): void {
+		this.checklist.uncheckItems();
+	}
+
 }

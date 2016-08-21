@@ -2,7 +2,7 @@ ion-header
 	ion-navbar(secondary)
 		ion-title {{ checklist.title }}
 		ion-buttons(end)
-			button
+			button((click)="uncheck()")
 				ion-icon(name="refresh-circle")
 			button((click)="add()")
 				ion-icon(name="add-circle")
@@ -12,10 +12,12 @@ ion-content
 		ion-item-sliding(*ngFor="let item of checklist.items")
 			ion-item
 				ion-label {{ item.title }}
-				ion-checkbox(secondary, [checked]="item.checked")
+				ion-checkbox(secondary, [checked]="item.checked", (click)="toggle(item)")
 
 			ion-item-options
-				button(light)
+				button(color="light")
 					ion-icon(name="clipboard")
-				button(danger)
+					span Rename
+				button(color="danger", (click)="remove(item)")
 					ion-icon(name="trash")
+					span Delete

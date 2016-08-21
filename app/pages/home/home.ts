@@ -34,6 +34,10 @@ export class HomePage {
 					savedChecklist.forEach(checklist => {
 						let loadedChecklist = new ChecklistModel(checklist.title, checklist.items);
 						this.checklists.push(loadedChecklist);
+
+						loadedChecklist.checklist.subscribe(update => {
+							this.save();
+						});
 					});
 				}
 			});
@@ -59,8 +63,13 @@ export class HomePage {
 				{
 					text: 'Save',
 					handler: data => {
-						let checklist = new ChecklistModel(data.name, []);
-						this.checklists.push(checklist);
+						let newChecklist = new ChecklistModel(data.name, []);
+						this.checklists.push(newChecklist);
+
+						// Subscribe -> Atender a los cambios q se generen
+						newChecklist.checklist.subscribe(update => {
+							this.save();
+						});
 
 						this.save();
 					}
@@ -91,6 +100,7 @@ export class HomePage {
 
 						if (index > -1) {
 						    this.checklists[index].setTitle(data.name);
+							this.save();
 						}
 					}
 				}
@@ -105,6 +115,7 @@ export class HomePage {
 
 		if (index > -1) {
 		    this.checklists.splice(index, 1);
+			this.save();
 		}
 	}
 
