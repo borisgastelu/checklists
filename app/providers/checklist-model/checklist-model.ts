@@ -54,6 +54,18 @@ export class ChecklistModel {
 				this.toggleItem(item);
 			}
 		});
+
+		this.checklistObserver.next(true);
+	}
+
+	saveImages(item, images: string[]): void {
+		let index = this.items.indexOf(item);
+
+		if (index > -1) {
+		    this.items[index].images = images;
+		}
+
+		this.checklistObserver.next(true);
 	}
 
 }

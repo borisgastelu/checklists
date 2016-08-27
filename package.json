@@ -40,7 +40,10 @@
     {
       "locator": "https://github.com/litehelpers/Cordova-sqlite-storage",
       "id": "cordova-sqlite-storage"
-    }
+    },
+    "cordova-plugin-camera",
+    "cordova-plugin-compat",
+    "cordova-plugin-image-picker"
   ],
   "cordovaPlatforms": [
     {

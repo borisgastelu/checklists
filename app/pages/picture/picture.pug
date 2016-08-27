@@ -1,0 +1,14 @@
+ion-header
+	ion-toolbar(secondary)
+		button(menuToggle, (click)="back()")
+			ion-icon(name="arrow-back")
+
+		ion-title Fotito
+
+ion-content(padding)
+	ion-grid
+		button((click)="getPicture()", block) Get Picture
+
+	ion-slides
+		ion-slide(*ngFor="let img of images")
+			img([src]="img")

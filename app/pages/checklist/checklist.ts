@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 
 import { ChecklistModel } from '../../providers/checklist-model/checklist-model';
+
+import { PicturePage } from '../picture/picture';
 
 @Component({
 	templateUrl: 'build/pages/checklist/checklist.html',
@@ -13,7 +15,8 @@ export class ChecklistPage {
 	constructor(
 		private _navCtrl: NavController,
 		private _navParams: NavParams,
-		private _alertCtrl: AlertController
+		private _alertCtrl: AlertController,
+		private _modalCtrl: ModalController
 	) {
 		this.checklist = this._navParams.get('data');
 	}
@@ -53,6 +56,18 @@ export class ChecklistPage {
 
 	uncheck(): void {
 		this.checklist.uncheckItems();
+	}
+
+	takePicture(item) {
+		let modal = this._modalCtrl.create(PicturePage, { images: item.images });
+
+		modal.onDidDismiss(images => {
+			if (images && images.length > 0) {
+				this.checklist.saveImages(item, images);
+			}
+		});
+
+		modal.present();
 	}
 
 }

@@ -13,11 +13,18 @@ ion-content
 			ion-item
 				ion-label {{ item.title }}
 				ion-checkbox(secondary, [checked]="item.checked", (click)="toggle(item)")
+				h2(item-right) {{ item.images?.length }} pictures
 
-			ion-item-options
+			ion-item-options(side="left")
+				button(color="energized", (click)="takePicture(item)")
+					ion-icon(name="images")
+					span Picture
+
+			ion-item-options(side="right")
 				button(color="light")
 					ion-icon(name="clipboard")
 					span Rename
+
 				button(color="danger", (click)="remove(item)")
 					ion-icon(name="trash")
 					span Delete
